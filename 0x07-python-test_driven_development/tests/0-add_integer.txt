@@ -1,68 +1,19 @@
-A test to for the add_integer function
-
-Import the module
->>> import sys
->>> sys.path.insert(1, '../')
->>> lib = __import__("0-add_integer")
->>> add_integer = lib.add_integer
-
-#Normal addition test
->>> add_integer(0)
-98
->>> add_integer(-1)
-97
->>> add_integer(10.5)
-108
-
-#Type Errors
->>> add_integer(10+5j)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer([])
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer({})
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer(set())
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
->>> add_integer("")
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+#!/usr/bin/python3
+'''Contains an add_integer function for a TDD project.
+'''
 
 
-#Two input additions
->>> add_integer(10, 10)
-20
->>> add_integer(10.5, 10.5)
-20
-
-#Two input addition type errors
->>> add_integer(10, 10+5j)
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, [])
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, {})
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, set())
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
-
->>> add_integer(10, "")
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
+def add_integer(a, b=98):
+    '''Computes the sum of two integers.
+    Args:
+        a (int): The first number.
+        b (int, optional): The second number.
+    Returns:
+        int: The sum of the two integers.
+    '''
+    if not isinstance(a, (int, float)):
+        raise TypeError('a must be an integer')
+    elif not isinstance(b, (int, float)):
+        raise TypeError('b must be an integer')
+    else:
+        return int(a) + int(b)
