@@ -1,9 +1,14 @@
 #!/usr/bin/python3
-# 5-to_json_string.py
-"""Defines a string-to-JSON function."""
-import json
+'''A module containing IO functions.
+'''
+from json import JSONEncoder
 
 
-def to_json_string(my_obj):
-    """Return the JSON representation of a string object."""
-    return json.dumps(my_obj)
+def save_to_json_file(my_obj, filename):
+    '''Saves the JSON representation of an object to a file.
+    Args:
+        my_obj (any): An object to convert to JSON.
+        filename (str): The file to save the JSON string in.
+    '''
+    with open(filename, mode='w', encoding='utf-8') as file:
+        file.write(JSONEncoder().encode(my_obj))

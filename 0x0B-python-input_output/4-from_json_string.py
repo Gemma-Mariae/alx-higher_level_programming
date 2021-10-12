@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-# 4-append_write.py
-"""Defines a file-appending function."""
+'''A module containing IO functions.
+'''
+from json import JSONDecoder
 
 
-def append_write(filename="", text=""):
-    """Appends a string to the end of a UTF8 text file.
+def from_json_string(my_str):
+    '''Creates an object from its JSON representation.
     Args:
-        filename (str): The name of the file to append to.
-        text (str): The string to append to the file.
+        my_str (str): A JSON representation of an object.
     Returns:
-        The number of characters appended.
-    """
-    with open(filename, "a", encoding="utf-8") as f:
-        return f.write(text)
+        any: An object corresponding to the given JSON string,
+        otherwise an exception is thrown.
+    '''
+    return JSONDecoder().decode(my_str)

@@ -1,16 +1,23 @@
 #!/usr/bin/python3
-# 9-add_item.py
-"""Add all arguments to a Python list and save them to a file."""
-import sys
+'''A module for managing students.
+'''
 
-if __name__ == "__main__":
-    save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
-    load_from_json_file = \
-        __import__('8-load_from_json_file').load_from_json_file
 
-    try:
-        items = load_from_json_file("add_item.json")
-    except FileNotFoundError:
-        items = []
-    items.extend(sys.argv[1:])
-    save_to_json_file(items, "add_item.json")
+class Student:
+    '''Represents a student.
+    '''
+    def __init__(self, first_name, last_name, age):
+        '''Initializes this student with the given first name,
+        last name, and age.
+        '''
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+
+    def to_json(self):
+        '''Retrieves a dictionary of this student's attributes.
+        Returns:
+            dict: A dictionary of this student's attributes.
+        '''
+        if '__dict__' in dir(self):
+            return self.__dict__

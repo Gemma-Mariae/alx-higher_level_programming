@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-# 3-write_file.py
-"""Defines a file-writing function."""
+'''A module containing IO functions.
+'''
+from json import JSONEncoder
 
 
-def write_file(filename="", text=""):
-    """Write a string to a UTF8 text file.
+def to_json_string(my_obj):
+    '''Creates the JSON representation of an object.
     Args:
-        filename (str): The name of the file to write.
-        text (str): The text to write to the file.
+        my_obj (any): An object to convert to JSON.
     Returns:
-        The number of characters written.
-    """
-    with open(filename, "w", encoding="utf-8") as f:
-        return f.write(text)
+        str: A JSON representation of the object if possible,
+        otherwise an exception is thrown.
+    '''
+    return JSONEncoder().encode(my_obj)

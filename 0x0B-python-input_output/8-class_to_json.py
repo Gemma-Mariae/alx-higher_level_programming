@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-# 8-load_from_json_file.py
-"""Defines a JSON file-reading function."""
-import json
+'''A module containing IO functions.
+'''
 
 
-def load_from_json_file(filename):
-    """Create a Python object from a JSON file."""
-    with open(filename) as f:
-        return json.load(f)
+def class_to_json(obj):
+    '''Retrieves the dictionary description of an object.
+    Args:
+        obj (any): An object whose attributes are to be retrieved.
+    Returns:
+        dict: The attributes of the object, otherwise None.
+    '''
+    if '__dict__' in dir(obj):
+        return obj.__dict__
